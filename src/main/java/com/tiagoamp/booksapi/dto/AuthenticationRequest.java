@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class AuthenticationRequest {
 
     @NotEmpty(message = "{required.field}")
-    @Email(message = "{invalid.field}")
+    @Email(message = "{invalid.field}")//
     private String email;
 
     @NotEmpty(message = "{required.field}")
