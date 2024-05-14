@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class AuthenticationRequest {
 
     @NotEmpty(message = "{required.field}")
-    @Email(message = "{invalid.field}")//
-    private String email;
+//    @Email(message = "{invalid.field}")//
+    private String username;
 
     @NotEmpty(message = "{required.field}")
     private String password;

@@ -44,7 +44,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest request) {
-        var response = authenticationService.authenticate(request.getEmail(), request.getPassword());
+        var response = authenticationService.authenticate(request.getUsername(), request.getPassword());
         return ResponseEntity.ok(response);
     }
 

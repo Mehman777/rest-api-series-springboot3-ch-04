@@ -41,7 +41,7 @@ public class TokenService {
         Instant expiration = generateExpirationTimeIn(10);  // expires in 10 min
         String token = JWT.create()
                 .withSubject(user.getUsername())
-                //.withExpiresAt(expiration)
+                .withExpiresAt(expiration)
                 .withIssuer("Books-API")
                 //.withClaim("roles", user.getRoles())
                 .sign(algorithm);

@@ -25,7 +25,10 @@ public class AppUser implements UserDetails {
 
     private String email;
 
+    private String username;
     private String password;
+
+
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -33,9 +36,10 @@ public class AppUser implements UserDetails {
     private Set<Role> roles = new HashSet<>();
 
 
-    public AppUser(String name, String email, String password, Set<Role> roles) {
+    public AppUser(String name, String email, String username, String password, Set<Role> roles) {
         this.name = name;
         this.email = email;
+        this.username = username;
         this.password = password;
         this.roles = roles;
     }

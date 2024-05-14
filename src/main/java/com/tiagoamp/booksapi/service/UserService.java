@@ -20,8 +20,8 @@ public class UserService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
     public AppUser save(AppUser user) {
-        if (userRepo.existsByEmail(user.getEmail()))
-            throw new ResourceAlreadyExistsException("User", user.getEmail());
+        if (userRepo.existsByEmail(user.getUsername()))
+            throw new ResourceAlreadyExistsException("User", user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user);
     }
@@ -31,8 +31,8 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepo.findByEmail(email)
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepo.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 

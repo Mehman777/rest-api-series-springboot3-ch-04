@@ -40,7 +40,7 @@ public class BooksApiApplication {
 			Set<Role> roles = new HashSet<>();
 			roles.add(Role.ROLE_ADMIN);
 			roles.add(Role.ROLE_USER);
-			userService.save(new AppUser("James Kirk", "james@enterprise.com", "123456",roles));
+			userService.save(new AppUser("James Kirk", "james@enterprise.com","admin1", "123456",roles));
 			BookEntity book= new BookEntity();
 			book.setAuthors("John John");
 			book.setTitle("title1");

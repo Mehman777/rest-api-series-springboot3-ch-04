@@ -25,10 +25,10 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final TokenService tokenService;
 
-    public AuthenticationResponse authenticate(String email, String password) {
+    public AuthenticationResponse authenticate(String username, String password) {
         try {
             // The authentication manager provides secure authentication and throws exception if it fails
-            var authToken = new UsernamePasswordAuthenticationToken(email, password);
+            var authToken = new UsernamePasswordAuthenticationToken(username, password);
             Authentication authenticate = authenticationManager.authenticate(authToken);
             var user  = (AppUser) authenticate.getPrincipal();
             String token = tokenService.generateToken(user);
