@@ -1,5 +1,6 @@
 package com.tiagoamp.booksapi.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +28,11 @@ public class AppUser implements UserDetails {
 
     private String username;
     private String password;
+
+    @JsonManagedReference("token_user_managed")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Token> tokens;
+
 
 
 
