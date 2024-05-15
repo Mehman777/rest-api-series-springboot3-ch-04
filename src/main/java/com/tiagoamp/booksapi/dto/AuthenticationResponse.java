@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class AuthenticationResponse {
 
+    private String username;
     private String token;
     private Set<Role> roles;
 

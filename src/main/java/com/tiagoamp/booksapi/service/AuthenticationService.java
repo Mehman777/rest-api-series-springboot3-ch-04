@@ -33,9 +33,7 @@ public class AuthenticationService {
             var user  = (AppUser) authenticate.getPrincipal();
             String token = tokenService.generateToken(user);
             Set<Role> roles= user.getRoles();
-            AuthenticationResponse response =  new AuthenticationResponse();
-            response.setRoles(roles);
-            response.setToken(token);
+            AuthenticationResponse response =  new AuthenticationResponse(username,token,roles);
             return response;
         } catch (AuthenticationException e) {
             throw new AuthenticationFailedException("Invalid User or Password");

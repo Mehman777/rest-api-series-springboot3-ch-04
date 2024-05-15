@@ -9,6 +9,7 @@ import com.tiagoamp.booksapi.service.AuthenticationService;
 import com.tiagoamp.booksapi.service.UserService;
 import com.tiagoamp.booksapi.util.UserMapper;
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest request) {
+    public ResponseEntity<AuthenticationResponse> login(@RequestBody @Valid AuthenticationRequest request, HttpServletResponse res) {
         var response = authenticationService.authenticate(request.getUsername(), request.getPassword());
         return ResponseEntity.ok(response);
     }
